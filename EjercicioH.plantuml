@@ -1,0 +1,34 @@
+@startuml
+class Registro {
+  - CatalogoProductos catalogo
+  + Registro(CatalogoProductos cp)
+  + finalizarVenta()
+  + crearNuevaVenta()
+  + introducirArticulo(ArticuloID id, int cant) : void
+}
+
+class CatalogoProductos {
+  - EspecificacionProducto getEspecificacion(ArticuloID id) : EspecificacionProducto
+}
+
+class Venta {
+  - Date fechaHora
+  - List lineasVenta
+  + Venta()
+  + crearLineaVenta(EspecificacionProducto espec, int cant) : void
+}
+
+class LineaVenta {
+  - EspecificacionProducto espec
+  - int cantidad
+  + LineaVenta(EspecificacionProducto espec, int cantidad)
+}
+
+Registro->CatalogoProductos: getEspecificacion(ArticuloID id)
+CatalogoProductos->Registro: EspecificacionProducto
+
+
+Registro -> Venta: crearLineaVenta(EspecificacionProducto espec, int cant)
+
+Venta -> Venta: añadir(LineaVenta lineaVenta)
+@enduml

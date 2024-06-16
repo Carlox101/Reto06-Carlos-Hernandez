@@ -1,0 +1,15 @@
+@startuml
+[*] --> Cliente
+Cliente --> Procesamiento_del_Pedido
+Procesamiento_del_Pedido --> Encargar_Producto
+Encargar_Producto --> Validar_Pedido
+Validar_Pedido --> Pagar
+Pagar --> Cobrar_Pago
+Cobrar_Pago --> Urgente
+Urgente --> Enviar_Producto_Urgente
+Urgente --> Enviar_Producto_Normal
+Enviar_Producto_Urgente --> Pedido_Realizado
+Enviar_Producto_Normal --> Pedido_Realizado
+Procesamiento_del_Pedido --> Pedido_Realizado
+Pedido_Realizado --> [*]
+@enduml
